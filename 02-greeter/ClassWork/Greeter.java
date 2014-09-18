@@ -1,10 +1,28 @@
 public class Greeter {
-
-    public String greeting = new String("Hello world!");
-    public void greet(){
-	System.out.println(greeting);
+    private String greeting;
+    
+    public Greeter(){ 
+	greeting="Hello World!";
     }
-    public void ungreet(){
-	System.out.println("Goodbye");
+
+
+    
+    public Greeter(String s){
+	greeting =s;
+    }
+    public void setGreeting(String s){
+	greeting = s;
+    }
+    
+    public String getGreeting(){
+	return greeting;
+    }
+    
+    public String greet(){
+	return greeting;
+    }
+    
+    public String ungreet(){
+	return "Goodbye";
     }
 }
