@@ -2,10 +2,11 @@ public class Driver{
 
     public static void main(String[] args){
 
-	Greeter g= new Greeter("Hi there!");
+	Greeter g= new Greeter("Hi there");
 	
 	System.out.println(g.greet());
-
+	System.out.println(g.greetPerson("Tommy"));
+	System.out.println(g.loudGreet());
 	/*
 	Greeter g1 = new Greeter();
 	Greeter g2 = new Greeter();

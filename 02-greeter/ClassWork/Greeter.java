@@ -10,6 +10,7 @@ public class Greeter {
     public Greeter(String s){
 	greeting =s;
     }
+
     public void setGreeting(String s){
 	greeting = s;
     }
@@ -18,6 +19,13 @@ public class Greeter {
 	return greeting;
     }
     
+    public String greetPerson(String person){
+	return greeting + " " +  person;
+    }
+
+    public String loudGreet(){
+	return greeting.toUpperCase();
+    }
     public String greet(){
 	return greeting;
     }
