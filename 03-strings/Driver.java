@@ -8,5 +8,7 @@ public class Driver {
 	String last = name.substring(index+1);
 	System.out.println(first);
 	System.out.println(last);
-   }
+	StringStuff b = new StringStuff();
+	b.test1();
+    }
 }
