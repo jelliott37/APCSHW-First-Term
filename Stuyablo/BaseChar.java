@@ -1,11 +1,13 @@
 public class BaseChar{
-    
+
     private int hp,mp,atk,def,spd,acc,lck;
-    private bool poisonState=false;
+    private boolean poisonState=false;
     private String name, weapon;
 
+
     public BaseChar(int h, int m, int a, int d, int s, int ac, int c, String n){
-	hp= h;
+	     Random r = new Random();
+	hp= r.nextInt(2)+h+1;
 	mp=m;
 	atk=a;
 	def=d;
@@ -40,8 +42,8 @@ public class BaseChar{
     public String getWeapon(){
 	return weapon;
     }
-    public bool isPoisoned(){
-	return poison;
+    public boolean isPoisoned(){
+	return poisonState;
     }
     public String poison(){
 	if (!poisonState){
