@@ -45,7 +45,7 @@ public class BaseChar{
     public int getLck(){
 	return lck;
     }
-    public int getACC{
+    public int getACC(){
 	return acc;
     }
     public String getWeapon(){
