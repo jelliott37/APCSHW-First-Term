@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Mage extends Basechar {
+public class Mage extends BaseChar {
 
     Random thing = new Random();
     Scanner userInput = new Scanner(System.in);
@@ -9,7 +9,7 @@ public class Mage extends Basechar {
     public Mage(int h, int m, int a, int d, int s, int ac, int c, String n, String w){
 	 super(h,m,a,d,s,ac,c,n,w);
     }
-    public String spell(Basechar other){
+    public String spell(BaseChar other){
 	if(userInput == "spell1" && r.nextInt(this.getACC()) > 20 ) {
 	    other.setHP(other.getHP() - 10);
 	    this.setMP(this.getMP() - 20);
