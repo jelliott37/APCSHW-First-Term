@@ -6,15 +6,16 @@ public class BaseChar{
     private String name, weapon;
     Random r = new Random();
 
-    public BaseChar(int h, int m, int a, int d, int s, int ac, int c, String n){
-	hp= r.nextInt(2)+h-1;
-	mp=r.nextInt(2)+m-1;
-	atk=r.nextInt(2)+a-1;
-	def=r.nextInt(2)+d-1;
+    public BaseChar(int h, int m, int a, int d, int s, int ac, int c, String n, String w){
+	hp=h;
+	mp=m;
+	atk=r.nextInt(3)+a-1;
+	def=r.nextInt(4)+d-2;
 	spd=r.nextInt(2)+s-1;
-	acc=r.nextInt(2)+ac-1;
-	lck=r.nextInt(2)+c-1;
+	acc=r.nextInt(10)+ac-5;
+	lck=r.nextInt(3)+c-1;
 	name=n;
+	weapon=w;
     }
     public String toString(){
 	return name;
@@ -43,6 +44,9 @@ public class BaseChar{
     }
     public int getLck(){
 	return lck;
+    }
+    public int getACC{
+	return acc;
     }
     public String getWeapon(){
 	return weapon;
