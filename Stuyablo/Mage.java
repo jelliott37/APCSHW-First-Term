@@ -16,8 +16,8 @@ public class Mage extends Basechar {
 	    return(this + " shot a fireball at " + other);
 	   
 	}else if(userInput == "spell2" && r.nextInt(this.getACC()) > 0) {
-	    other.setHP(other.getHP - 10);
-	    this.setMP(this.getMP - 30);
+	    other.setHP(other.getHP() - 10);
+	    this.setMP(this.getMP() - 30);
 	    return(this + " electrified " + other);
 	}else if(userInput == "spell3" && r.nextInt(this.getACC()) > 20) {
 	    other.setHP(other.getHP() - 20);
@@ -27,6 +27,6 @@ public class Mage extends Basechar {
 	    this.setMP(this.getMP()-30);
 	    return "The spell fizzled and died";
 	}
-	
+    }	
 
 }
