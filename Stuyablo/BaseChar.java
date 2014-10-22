@@ -66,11 +66,11 @@ public class BaseChar{
 	    if (other.getDef()>this.getAtk()){
 		return "" + this + " could deal no damage to " + other;
 	    }
-	    if (r.nextInt(100)+1<lck){
-		other.setHP(other.getHP()+2*(other.getDef()-this.getAtk()));
+        if (r.nextInt(100)+1<lck){
+		other.setHP( other.getHP()+r.nextInt(3)-3+2*(other.getDef()-this.getAtk()));
 		return "" + this + " attacked " + other + " with " + weapon + " and injured " + other;
 	    }
-	    other.setHP(other.getHP()+other.getDef()-this.getAtk());
+	    other.setHP(other.getHP()+r.nextInt(2)-2+other.getDef()-this.getAtk());
 	    return "" + this + " attacked " + other + " with " + weapon + " and injured " + other;
 	}
 	return "" + this + " missed " + other;
