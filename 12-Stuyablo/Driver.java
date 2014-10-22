@@ -139,7 +139,7 @@ public class Driver {
 	    } catch(Exception e){}
 	    if (mage.getMP() < 50) {
 		mage.increaseMP(10);
-		System.out.println(mage + " gained 10 MP." + mage + " now has " + mage.getMP() + " MP.");
+		System.out.println(mage + " gained 10 MP. " + mage + " now has " + mage.getMP() + " MP.");
 	    }
 	    if (mage.isPoisoned()) {
 		mage.setHP(mage.getHP() - 5);
@@ -155,3 +155,4 @@ public class Driver {
 	}
     }
 }
+
