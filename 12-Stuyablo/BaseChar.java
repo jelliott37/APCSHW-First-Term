@@ -9,11 +9,11 @@ public class BaseChar{
     public BaseChar(int h, int m, int a, int d, int s, int ac, int c, String n, String w){
 	hp=h;
 	mp=m;
-	atk=r.nextInt(3)+a-1;
-	def=r.nextInt(4)+d-2;
-	spd=r.nextInt(2)+s-1;
-	acc=r.nextInt(10)+ac-5;
-	lck=r.nextInt(3)+c-1;
+	atk=a;
+	def=d;
+	spd=s;
+	acc=ac;
+	lck=c;
 	name=n;
 	weapon=w;
     }
@@ -32,6 +32,9 @@ public class BaseChar{
     }
     public void setHP(int h){
         hp = h;
+    }
+    public void increaseMP(int m){
+	mp=mp+m;
     }
     public int getAtk(){
 	return atk;
@@ -54,6 +57,9 @@ public class BaseChar{
     public boolean isPoisoned(){
 	return poisonState;
     }
+    public void makePoisoned() {
+	poisonState=true;
+    }
     public String poison(){
 	if (!poisonState){
 	    poisonState = true;
@@ -66,11 +72,11 @@ public class BaseChar{
 	    if (other.getDef()>this.getAtk()){
 		return "" + this + " could deal no damage to " + other;
 	    }
-        if (r.nextInt(100)+1<lck){
-		other.setHP( other.getHP()+r.nextInt(3)-3+2*(other.getDef()-this.getAtk()));
+	    if (r.nextInt(100)+1<lck){
+		other.setHP(other.getHP()+2*(other.getDef()-this.getAtk()));
 		return "" + this + " attacked " + other + " with " + weapon + " and injured " + other;
 	    }
-	    other.setHP(other.getHP()+r.nextInt(2)-2+other.getDef()-this.getAtk());
+	    other.setHP(other.getHP()+other.getDef()-this.getAtk());
 	    return "" + this + " attacked " + other + " with " + weapon + " and injured " + other;
 	}
 	return "" + this + " missed " + other;
