@@ -33,4 +33,47 @@ public class ArrayStuff{
 	}
 	return champ;
     }
+    public int maxMirror(int[] nums){
+	int champ=0;
+	for (int i = 0; i<nums.length; i ++){
+	    int iter=0;
+	    int top=i;
+	    int bottom=0;
+	    boolean mirroring=false;
+	    while (top < nums.length && bottom<nums.length){
+		if(mirroring){
+		    if(nums[top]!= nums[nums.length-bottom-1]){
+			if (iter>champ){
+			    champ=iter;
+			}
+			mirroring=false;
+			top=i;
+		    }
+		    else{
+			iter++;
+			top++;
+			bottom++;
+          
+		    }
+		}
+		else{
+		    if (nums[top]!= nums[nums.length-bottom-1]){
+			bottom++;
+		    }
+		    else{
+			iter=1;
+			mirroring=true;
+			top++;
+			bottom++;
+		    }
+		}
+      
+	    }
+	    if (iter>champ){
+		champ=iter;
+	    }
+	}
+
+	return champ;
+    }
 }
