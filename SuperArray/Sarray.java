@@ -42,7 +42,7 @@ public class Sarray{
 	    }
 	    last++;
 	}else{
-	    add(n);
+	    throw new ArrayIndexOutOfBoundsException();
 	}
     }
     
@@ -50,7 +50,7 @@ public class Sarray{
 	if (index<=last)
 	    return data[index];
 	else
-	    System.out.println("No value in Index");
+	    throw new ArrayIndexOutOfBoundsException();
     }
     public void set(int index, int i){
 	if (index<data.length){
@@ -61,11 +61,15 @@ public class Sarray{
 	return last+1;
     }
     public void remove(int index){
-	for (int i=index; i<last; i++){
-	    data[i]=data[i+1];
+	if (index<=last){
+	    for (int i=index; i<last; i++){
+		data[i]=data[i+1];
+	    }
+	    data[last]=0;
+	    last--;
 	}
-	data[last]=0;
-	last--;
+	else
+	    throw new ArrayIndexOutOfBoundsException();
     }
 }
 
