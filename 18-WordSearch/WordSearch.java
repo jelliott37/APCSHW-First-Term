@@ -31,10 +31,14 @@ public class WordSearch{
     }
     
     public boolean check(int r,int c,char a){
-	if(r>=board.length || c>=board[r].length){
+	
+	if(r>=board.length || c>=board[r].length||r<0||c<0){
 	    return false;
 	}
 	return board[r][c] == '*'|| board[r][c]==a;
+        
+ 
+	
     }
     
     public void add(String word){
@@ -67,7 +71,14 @@ public class WordSearch{
 	}
     }
     
-    
+    public void fill(){
+	Random r = new Random();
+	for (char[] i:board){
+	    for (char j: i){
+		j=(char)(r.nextInt(26)+'A');
+	    }
+	}
+    }
     
     
     
@@ -82,9 +93,12 @@ public class WordSearch{
 		c=Integer.parseInt(args[1]);
 	    }}
 	catch(Exception e){}
-	    WordSearch w = new WordSearch(r,c);
+	WordSearch w = new WordSearch(r,c);
 	System.out.println(w);
-	w.add("Horse");
+	for (String s : w.wordBank){ 
+	    w.add(s);
+	}
+	w.fill(w.board);
 	System.out.println(w);
     }
 }
