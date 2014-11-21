@@ -4,7 +4,7 @@ public class WordSearch{
     
     private char[][] board;
     
-    String[] wordBank = {"DOG","CAT","FROG","HORSE","MOUSE","BAT","RABBIT","GIRAFFE","WHALE"};
+    ArrayList<String> wordBank=new ArrayList<String>;
     
     public WordSearch(int row,int col){
 	board = new char[row][col];
@@ -55,7 +55,8 @@ public class WordSearch{
 	boolean test= false;
 	int startr=0;
 	int startc=0;
-	while(!test){
+	int iter=0;
+	while(!test&&iter<5){
 	    startr = r.nextInt(board.length);
 	    startc = r.nextInt(board[0].length);
 	    int tempr = startr;
@@ -63,14 +64,17 @@ public class WordSearch{
 	    for (int i=0;i<word.length();i++){
 		test=check(tempr,tempc,word.charAt(i));
 		if (!test){
+		    iter++;
 		    break;
 		}
 		tempr += xinc;
 		tempc += yinc;
 	    }
 	}
-	for (int i=0;i<word.length();i++){
-	    board[startr+i*xinc][startc+i*yinc]=word.charAt(i);
+	if (iter!=5){
+	    for (int i=0;i<word.length();i++){
+		board[startr+i*xinc][startc+i*yinc]=word.charAt(i);
+	    }
 	}
     }
     
@@ -86,7 +90,11 @@ public class WordSearch{
 	}
     }
     
-    
+    public void getWordBank(Scanner sc){
+	while(sc.hasNext()){
+	    wordBank.add(sc.next());
+	}
+    }
     
     public static void main(String[] args){
 	int r = 20;
@@ -97,9 +105,19 @@ public class WordSearch{
 	    }else if (args.length!=0){
 		r=Integer.parseInt(args[0]);
 		c=Integer.parseInt(args[1]);
-	    }}
+	    }
+	}
 	catch(Exception e){}
+	Scanner sc = null;
+	try{
+	    sc = new Scanner(new file("words.txt"));
+	}
+	catch(Exception e){
+	    System.out.println("No words.txt file in current directory");
+	    System.exit(0);
+	}
 	WordSearch w = new WordSearch(r,c);
+	w.getWordBank(sc);
 	System.out.println(w);
 	for (String s : w.wordBank){ 
 	    w.add(s);
