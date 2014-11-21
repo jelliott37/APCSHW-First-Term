@@ -23,16 +23,19 @@ public class WordSearch{
 	String ans = "";
 	for (int r=0;r<board.length;r++){
 	    for (int c=0;c<board[r].length;c++){
-		ans+=board[r][c];
+		ans+=board[r][c]+" ";
 	    }
-	    ans+="\n";
+	    ans+="\n\n";
 	}
 	return ans;
     }
     
     public boolean check(int r,int c,char a){
 	
-	if(r>=board.length || c>=board[r].length||r<0||c<0){
+	if(r<0||c<0){
+	    return false;
+	}
+	else if (r>=board.length || c>=board[r].length){
 	    return false;
 	}
 	return board[r][c] == '*'|| board[r][c]==a;
@@ -73,9 +76,12 @@ public class WordSearch{
     
     public void fill(){
 	Random r = new Random();
-	for (char[] i:board){
-	    for (char j: i){
-		j=(char)(r.nextInt(26)+'A');
+	for (int i = 0; i < board.length;i++){
+	    for (int j = 0; j<board[i].length;j++){
+		if (board[i][j]=='*'){
+		    board[i][j]=(char)(r.nextInt(26)+'A');
+		    // System.out.println(board[i][j]);
+		}
 	    }
 	}
     }
@@ -98,7 +104,7 @@ public class WordSearch{
 	for (String s : w.wordBank){ 
 	    w.add(s);
 	}
-	w.fill(w.board);
+	w.fill();
 	System.out.println(w);
     }
 }
