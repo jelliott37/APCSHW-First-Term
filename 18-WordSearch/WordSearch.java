@@ -4,7 +4,7 @@ public class WordSearch{
     
     private char[][] board;
     
-    ArrayList<String> wordBank=new ArrayList<String>;
+    ArrayList<String> wordBank=new ArrayList<String>();
     
     public WordSearch(int row,int col){
 	board = new char[row][col];
@@ -44,6 +44,27 @@ public class WordSearch{
 	
     }
     
+    public boolean find(int r,int c,char[] a,int dr, int dc){
+	for (char i:a){
+	    
+	    if(r<0||c<0){
+		return false;
+	    }
+	    else if (r>=board.length || c>=board[0].length){
+		return false;
+	    }
+	    else if(board[r][c]!=i){
+		return false;
+	    }
+	    r+=dr;
+	    c+=dc;
+	}
+	return true;
+
+        
+ 
+	
+    }    
     public void add(String word){
 	Random r = new Random();
 	int xinc = 0;
@@ -110,7 +131,7 @@ public class WordSearch{
 	catch(Exception e){}
 	Scanner sc = null;
 	try{
-	    sc = new Scanner(new file("words.txt"));
+	    sc = new Scanner(new File("words.txt"));
 	}
 	catch(Exception e){
 	    System.out.println("No words.txt file in current directory");
@@ -124,5 +145,17 @@ public class WordSearch{
 	}
 	w.fill();
 	System.out.println(w);
+	Scanner scan= new Scanner(System.in());
+	for(String s : w.wordBank){
+	    boolean found=false;
+	    while(!found){
+		System.out.println("Please find this word:"+s);
+		System.out.println("Input the number of rows from the top");
+		int row=scan.nextInt();
+		System.out.println("Input the number of columns from the left");
+		int col = scan.nextInt();
+		System.out.println("");
+	    }
+	}
     }
 }
