@@ -115,8 +115,12 @@ public class WordSearch{
     
     public void getWordBank(Scanner sc){
 	while(sc.hasNext()){
-	    wordBank.add(sc.next());
+	    wordBank.add(sc.next().toUpperCase());
 	}
+    }
+
+    public void otherWordFill(){
+	
     }
     
     public static void main(String[] args){
@@ -150,19 +154,32 @@ public class WordSearch{
 	w.fill();
 	System.out.println(w);
 	Scanner scan= new Scanner(System.in);
+	System.out.println(w);
 	for(String ph : w.wordBank){
 	    char[] s = ph.toCharArray();
 	    boolean found=false;
 	    while(!found){
-		System.out.println(w);
 		System.out.println("Please find this word:"+ph);
 		System.out.println("Input the number of rows from the top");
-		int row=scan.nextInt();
-		System.out.println("Input the number of columns from the left");
-		int col = scan.nextInt();
-		scan.nextLine();
-		System.out.println("Input a direction (N,NE,E,SE,S,SW,W,NW)");
-		String dir=scan.nextLine();
+		String dir="BLAH";
+		int row=1;
+		int col=1;
+
+		try{
+		    row=scan.nextInt();
+		    System.out.println("Input the number of columns from the left");
+		    col = scan.nextInt();
+		    scan.nextLine();
+		    System.out.println("Input a direction (N,NE,E,SE,S,SW,W,NW)");
+		    dir=scan.nextLine();
+		    System.out.println(w);
+		}
+		catch(InputMismatchException e){
+		    System.out.println(w);
+		    System.out.println("numbers! please don't try to break this code.");
+		    scan.nextLine();
+		}
+
 		if(dir.equalsIgnoreCase("N")&&w.find(row,col,s,-1,0)){
 		    found=true;
 		    System.out.println("Good Stuff");
