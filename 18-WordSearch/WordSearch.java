@@ -4,7 +4,7 @@ public class WordSearch{
     
     private char[][] board;
     
-    ArrayList<String> wordBank=new ArrayList<String>();
+    public ArrayList<String> wordBank=new ArrayList<String>();
     
     public WordSearch(int row,int col){
 	board = new char[row][col];
@@ -65,7 +65,7 @@ public class WordSearch{
  
 	
     }    
-    public void add(String word){
+    public boolean add(String word){
 	Random r = new Random();
 	int xinc = 0;
 	int yinc = 0;
@@ -77,7 +77,7 @@ public class WordSearch{
 	int startr=0;
 	int startc=0;
 	int iter=0;
-	while(!test&&iter<5){
+	while(!test&&iter<100){
 	    startr = r.nextInt(board.length);
 	    startc = r.nextInt(board[0].length);
 	    int tempr = startr;
@@ -92,11 +92,13 @@ public class WordSearch{
 		tempc += yinc;
 	    }
 	}
-	if (iter!=5){
+	if (iter!=100){
 	    for (int i=0;i<word.length();i++){
 		board[startr+i*xinc][startc+i*yinc]=word.charAt(i);
 	    }
+	    return true;
 	}
+	return false;
     }
     
     public void fill(){
@@ -139,22 +141,57 @@ public class WordSearch{
 	}
 	WordSearch w = new WordSearch(r,c);
 	w.getWordBank(sc);
-	System.out.println(w);
-	for (String s : w.wordBank){ 
-	    w.add(s);
+	for (int i = w.wordBank.size()-1;i>=0;i--){ 
+	    boolean added=w.add(w.wordBank.get(i));
+	    if(!added){
+		w.wordBank.remove(i);
+	    }
 	}
 	w.fill();
 	System.out.println(w);
-	Scanner scan= new Scanner(System.in());
-	for(String s : w.wordBank){
+	Scanner scan= new Scanner(System.in);
+	for(String ph : w.wordBank){
+	    char[] s = ph.toCharArray();
 	    boolean found=false;
 	    while(!found){
-		System.out.println("Please find this word:"+s);
+		System.out.println(w);
+		System.out.println("Please find this word:"+ph);
 		System.out.println("Input the number of rows from the top");
 		int row=scan.nextInt();
 		System.out.println("Input the number of columns from the left");
 		int col = scan.nextInt();
-		System.out.println("");
+		scan.nextLine();
+		System.out.println("Input a direction (N,NE,E,SE,S,SW,W,NW)");
+		String dir=scan.nextLine();
+		if(dir.equalsIgnoreCase("N")&&w.find(row,col,s,-1,0)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("NE")&&w.find(row,col,s,-1,1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("E")&&w.find(row,col,s,0,1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("SE")&&w.find(row,col,s,1,1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("S")&&w.find(row,col,s,1,0)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("SW")&&w.find(row,col,s,1,-1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("W")&&w.find(row,col,s,0,-1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else if(dir.equalsIgnoreCase("NW")&&w.find(row,col,s,-1,-1)){
+		    found=true;
+		    System.out.println("Good Stuff");
+		}else{
+		    System.out.println("Really? That's not quite right.");
+		}
+		
+
 	    }
 	}
     }
