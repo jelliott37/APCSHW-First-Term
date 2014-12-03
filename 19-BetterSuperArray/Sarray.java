@@ -1,26 +1,33 @@
 public class Sarray{
 
-    private Object[] data;
-    private int last;
+    private String[] data;
+    protected int last;
     public Sarray(){
 	this(10);
     }
+    public String toString(){
+	String val="";
+	for (int i = 0; i <last;i++){
+	    val+=get(i)+ ",";
+	}
+	return val;
+    }
     public Sarray(int n){
-	data=new Object[n];
+	data=new String[n];
 	last=0;
     }
 
-    public int find(Object n){
+    public int find(String n){
 	for (int i = 0;i<data.length;i++){
 	    if (data[i].equals(n)) return i;
 	}
 	return -1;
     }
     
-    public void add(Object n){
+    public void add(String n){
 	if (last==data.length-1){
-	    Object[] ph = data;
-	    data= new Object[data.length+1];
+	    String[] ph = data;
+	    data= new String[data.length+1];
 	    for ( int i=0; i<ph.length;i++){
 		data[i]=ph[i];
 	    }
@@ -29,11 +36,11 @@ public class Sarray{
 	last++;
 	data[last]=n;
     }
-    public void add(int index, Object n){
+    public void add(int index, String n){
 	if (index<=last){
 	    if (data.length-1==last){
-		Object PlaceHolder[] = data;
-		data = new Object[data.length+1];
+		String PlaceHolder[] = data;
+		data = new String[data.length+1];
 		for (int i=0;i<index; i++){
 		    data[i]=PlaceHolder[i];
 		}
@@ -53,13 +60,28 @@ public class Sarray{
 	}
     }
     
-    public Object get(int index){
+
+    public void isort(){
+	int check=1;
+	while (check>0){
+	    for (int i = 0; i <last-1;i++){
+		if(get(i).compareTo(get(i+1))>0){
+		    String ph = get(i);
+		    set(i,get(i+1));
+		    set(i+1,ph);
+		    check++;
+		}
+	    }
+	}
+    }
+
+    public String get(int index){
 	if (index<=last)
 	    return data[index];
 	else
 	    throw new ArrayIndexOutOfBoundsException();
     }
-    public void set(int index, Object i){
+    public void set(int index, String i){
 	if (index<data.length){
 	    data[index]=i;
 	}
