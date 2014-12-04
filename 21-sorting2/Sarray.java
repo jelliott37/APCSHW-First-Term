@@ -60,7 +60,7 @@ public class Sarray{
 	}
     }
     
-
+    //bsort has at least the time of n (if properly sorted), but usually the time depends on degree of bad sorting. It can be at most n^2.
     public void bsort(){
 	int check=1;
 	while (check>0){
@@ -75,6 +75,7 @@ public class Sarray{
 	    }
 	}
     }
+    //ssort always has the time of (n*(n+1)/2)
     public void ssort(){
 	for (int i = 0; i <data.length-1;i++){
 	    String champ= data[i];
@@ -89,6 +90,7 @@ public class Sarray{
 	    data[i]=champ;
 	}
     }
+    //isort has at most the time of the ssort (n*(n+1)/2)
     public void isort(){
 	int index;
 	String ph="";
