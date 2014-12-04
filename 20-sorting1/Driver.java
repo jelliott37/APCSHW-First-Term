@@ -7,7 +7,7 @@ public class Driver{
 	blah.add("A");
 	blah.add("ab");
 	System.out.println(blah);
-	blah.isort();
+	blah.ssort();
 	System.out.println(blah);
     }
 

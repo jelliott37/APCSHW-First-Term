@@ -61,7 +61,7 @@ public class Sarray{
     }
     
 
-    public void isort(){
+    public void bsort(){
 	int check=1;
 	while (check>0){
 	    check=0;
@@ -73,6 +73,32 @@ public class Sarray{
 		    check++;
 		}
 	    }
+	}
+    }
+    public void ssort(){
+	for (int i = 0; i <data.length-1;i++){
+	    String champ= data[i];
+	    int location=i;
+	    for (int k = i; k<data.length-1;k++){
+		if (data[k].compareTo(data[location])<0){
+		    champ=data[k];
+		    location=k;
+		}
+	    }
+	    data[location]=data[i];
+	    data[i]=champ;
+	}
+    }
+    public void isort(){
+	int index;
+	String ph="";
+	for (int i = 0; i<last-1;i++){
+	    int k;
+	    ph=data[i];
+	    for (k = i; i>0&&ph.compareTo(data[k-1])<=0;k--){
+		data[k]=data[k-1];
+	    }
+	    data[k]=ph;
 	}
     }
 
