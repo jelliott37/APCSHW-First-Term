@@ -14,7 +14,8 @@ public class Sarray{
     }
     public Sarray(int n){
 	data=new String[n];
-	last=0;
+	last=n;
+	Random r = new 
     }
 
     public int find(String n){
@@ -23,7 +24,9 @@ public class Sarray{
 	}
 	return -1;
     }
-    
+    public void builtin(){
+	Arrays.sort(data);
+    }
     public void add(String n){
 	if (last==data.length-1){
 	    String[] ph = data;

@@ -1,8 +1,15 @@
-APCSHW
+#APCSHW
 ======
 
-APCS Homework
+###APCS Homework
 
-I am currently done with filling in letters, adding words from a seperate list, and allowing users to establish the size of the array.
-I have added multiple lists
-I have added the ability to input the position of a word. (a given one)
+
+#####WordSearch
+- [x] Fill in with words and random letters
+- [x] user input
+- [ ] words from dictionary
+
+
+
+#####Sorting
+The built in sort is the fastest, followed by insertion sort, then selection sort, then bubble sort
