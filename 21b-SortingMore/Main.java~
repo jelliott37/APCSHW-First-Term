@@ -1,0 +1,9 @@
+public class Main{
+    public static void main(String[] args){
+	BaseChar[] blah= new BaseChar[2];
+	blah[0]=new BaseChar("B");
+	blah[1]=new BaseChar("A");
+	Arrays.sort(blah);
+	System.out.println(blah);
+    }
+}
