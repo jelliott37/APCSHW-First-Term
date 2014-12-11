@@ -1,11 +1,13 @@
 import java.util.Random;
-public class BaseChar{
+public class BaseChar implements Comparable{
 
     private int hp,mp,atk,def,spd,acc,lck;
     private boolean poisonState=false;
     private String name, weapon;
     Random r = new Random();
-
+    public BaseChar(String n){
+	name=n;
+    }
     public BaseChar(int h, int m, int a, int d, int s, int ac, int c, String n, String w){
 	hp=h;
 	mp=m;
@@ -20,7 +22,10 @@ public class BaseChar{
     public String toString(){
 	return name;
     }
-    
+    public int compareTo(Object other){
+	BaseChar o = (BaseChar) (other);
+	return 0 - o.toString().compareTo(name);
+    }
     public int getHP(){
 	return hp;
     }

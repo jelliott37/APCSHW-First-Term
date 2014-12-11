@@ -4,7 +4,9 @@ import java.io.*;
 public class Mage extends BaseChar {
 
     Random thing = new Random();
-    
+    public Mage(String n){
+	super(n);
+    }
     public Mage(int h, int m, int a, int d, int s, int ac, int c, String n, String w){
 	 super(h,m,a,d,s,ac,c,n,w);
     }
