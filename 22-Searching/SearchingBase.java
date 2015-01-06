@@ -27,10 +27,10 @@ public class Searching{
 		return a[mid];
 	    }
 	    else if(a[mid].compareTo(b)<0){
-		low=mid;
+		low=mid+1;
 	    }
 	    else{
-		high=mid;
+		high=mid-1;
 	    }
 	}
 	return null;
@@ -44,10 +44,10 @@ public class Searching{
 	    return null;
 	}
 	else if (a[mid].compareTo(b)<0){
-        return rbsearch(mid, high, b);
+        return rbsearch(mid+1, high, b);
 	}
 	else {
-        return rbsearch(low, mid, b);
+        return rbsearch(low, mid-1, b);
 	}
     }
     public static void main(Comparable[] args){

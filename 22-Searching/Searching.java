@@ -27,10 +27,10 @@ public class Searching{
 		return a[mid];
 	    }
 	    else if(a[mid].compareTo(b)<0){
-		low=mid;
+		low=mid+1;
 	    }
 	    else{
-		high=mid;
+		high=mid-1;
 	    }
 	}
 	return null;
